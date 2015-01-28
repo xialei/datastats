@@ -1,0 +1,36 @@
+ops_visit_log = {
+	"_id": ObjectId,			# _id, 采用系统ID即可
+	"c": 1,						# int32 模块Component，int整形，目前可选值有：1:官网,2:public company,3:edb,4:ced,5:pevc,6:news,7:announcement,8:comps,9:sam,10:paam(没在使用),11:RESEARCH REPORT,12:CORNER STONE,13:SCREENER, 21:FIN, 22:BUSINESS 以后还可能增加
+	"a": 1,						# int32 行为Action，int整形, 目前可选值有：1:query,2:page view, 3:export, 4: login, 5:logout, 6: favorite, 51:首页公司访问, 具体信息存 m字段 99:others 以后还可能增加
+	"u": 1,						# int64 用户ID,长整形,可以为null
+	"t": 1,						# int32 用户类型 0: chinascope internal user, 1: customer
+	"sid": "acxxx",				# 用户当前会话ID(SESSION ID),32位MD5值,便于追踪一个特定的用户
+	"ip": "192.168.0.1",			# 访问IP
+	"h": "www.hostname.com",	# 访问域名
+	"p": "/news/post/1.html",		# 用户访问路径
+	"q": "a=x&b=x",				# 页面查询参数
+	"req": "",					# 页面提交的REQUEST数据
+	"ck": "",					# 浏览器COOKIES
+	"rf": "",					# referrer,页面访问来源
+	"br": "",					# browser, 用户浏览器类型
+	"m": {"num":1},				# 消息体,json数据
+	"ts": ISODate,				# 系统时间Timestamp，插入时系统自动生成即可
+}
+
+
+ops_visit_log_stats = {
+	"_id": 	ObjectId,
+	"u":	1, 					# int64, userid , -98 used for last processd id, -1 used for sum of all users in a month, 0 for anonymous user
+	"y":	2014,				# int32, year
+	"m":	4,					# int32, month, 0 for sum of a whole year
+	"v":{						# int64
+		"total": 580,
+		"a1": 50,
+		"a2": 60,
+		"c1": 100,
+		"c2": 200,
+		"e1": 20,
+		"e2": 30
+	},
+	"eid": ["","","",...]		# reference object id
+}
